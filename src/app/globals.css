@@ -62,6 +62,7 @@ p { margin: 0; }
 .menu a { color: var(--tinta); text-decoration: none; }
 .menu a:hover { color: var(--castanho); }
 .menu .botao { color: #fff; }
+.menu-alternar { display: none; }
 .contador-carrinho {
   min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px;
   background: #fff; color: var(--castanho); font-size: 12px; font-weight: 700;
@@ -205,14 +206,60 @@ p { margin: 0; }
 .spinner.pequeno { width: 18px; height: 18px; border-width: 2.5px; }
 .largura-total { width: 100%; }
 @keyframes girar { to { transform: rotate(360deg); } }
-/* Telemóvel: cabeçalho compacto e não fixo */
+/* Telemóvel */
 @media (max-width: 640px) {
-  html { scroll-padding-top: 12px; }
-  .cabecalho { position: static; }
-  .cabecalho-linha { padding-top: 10px; padding-bottom: 10px; }
+  html { scroll-padding-top: 110px; }
+  .cabecalho {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 18px rgba(31, 21, 16, 0.04);
+  }
+  .cabecalho-linha {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px 14px;
+    justify-content: space-between;
+  }
+  .marca { align-items: flex-start; }
+  .menu-alternar {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--castanho);
+    cursor: pointer;
+  }
   .marca img { width: 140px; }
-  .menu { font-size: 14px; gap: 4px 16px; }
-  .menu .botao { min-height: 42px; padding: 0 18px; }
+  .menu {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    font-size: 14px;
+    gap: 4px;
+    padding-top: 8px;
+    border-top: 1px solid var(--linha);
+  }
+  .menu.menu-aberto { display: flex; }
+  .menu a {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+  }
+  .menu .botao {
+    width: 100%;
+    max-width: 240px;
+    min-height: 42px;
+    padding: 0 18px;
+    margin-top: 4px;
+    align-self: center;
+  }
   .inicio-linha { padding-top: 36px; padding-bottom: 44px; gap: 28px; }
   .seccao { padding-top: 56px; }
 }
