@@ -208,19 +208,26 @@ p { margin: 0; }
 @keyframes girar { to { transform: rotate(360deg); } }
 /* Telemóvel */
 @media (max-width: 640px) {
-  html { scroll-padding-top: 110px; }
+  html { scroll-padding-top: 86px; }
+  body { padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
   .cabecalho {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    padding-top: env(safe-area-inset-top, 0px);
     box-shadow: 0 4px 18px rgba(31, 21, 16, 0.04);
   }
   .cabecalho-linha {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    min-height: 72px;
     padding-top: 10px;
     padding-bottom: 10px;
-    gap: 10px 14px;
-    justify-content: space-between;
+    gap: 0 12px;
   }
-  .marca { align-items: flex-start; }
+  .marca { grid-column: 2; justify-self: center; align-items: center; text-align: center; }
   .menu-alternar {
     width: 44px;
     height: 44px;
@@ -232,13 +239,18 @@ p { margin: 0; }
     background: #fff;
     color: var(--castanho);
     cursor: pointer;
+    grid-column: 3;
   }
   .marca img { width: 140px; }
   .menu {
+    grid-column: 1 / -1;
     width: 100%;
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
     display: none;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
     font-size: 14px;
     gap: 4px;
     padding-top: 8px;
